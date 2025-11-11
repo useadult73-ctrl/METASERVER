@@ -23,6 +23,14 @@
             color: #1e293b; /* Slate-900 equivalent for primary text */
             transition: background-color 0.3s ease;
         }
+        
+        /* === FIX: Guarantee Header Stacking Order and Opacity === */
+        #header {
+            /* Ensures the header is the top layer, overriding all other content */
+            z-index: 999;
+            /* Guarantees solid white background, preventing scroll-through text */
+            background-color: #ffffff !important; 
+        }
 
         /* CRITICAL: Ensures content isn't hidden under the fixed header when scrolling to an anchor link */
         section {
@@ -247,8 +255,8 @@
 <body class="antialiased text-slate-900">
 
     <!-- Header / Navigation Bar - Clean and Minimalist -->
-    <!-- FIXED: Background set to fully opaque white (bg-white) -->
-    <header id="header" class="bg-white fixed top-0 left-0 right-0 z-50 shadow-sm border-b border-slate-100 transition duration-300">
+    <!-- The z-index is now primarily controlled by the custom CSS #header selector for maximum priority -->
+    <header id="header" class="bg-white fixed top-0 left-0 right-0 shadow-sm border-b border-slate-100 transition duration-300">
         <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <!-- LOGO (Clean Text) -->
             <a href="#hero" class="text-2xl font-extrabold text-slate-900 flex items-center">
