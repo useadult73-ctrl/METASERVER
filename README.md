@@ -3,11 +3,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>METASERVER - Custom Web Development</title>
-    <meta name="description" content="METASERVER builds high-performance, custom websites for small businesses that want to grow. We specialize in design, development, and SEO to build your digital presence.">
+    <title>WebValet - Custom Web Development</title>
+    <meta name="description" content="WebValet builds high-performance, custom websites for small businesses that want to grow. We specialize in design, development, and SEO to build your digital presence.">
     
-    <!-- Updated favicon to primary brand color: #3A6FFF -->
-    <link rel="icon" href="https://placehold.co/32x32/3A6FFF/ffffff?text=MS" type="image/png">
+    <!-- Updated favicon to primary brand color: #3A98FF -->
+    <link rel="icon" href="https://placehold.co/32x32/3A98FF/ffffff?text=WV" type="image/png">
 
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,14 +23,6 @@
             color: #1e293b; /* Slate-900 equivalent for primary text */
             transition: background-color 0.3s ease;
         }
-        
-        /* === FIX: Guarantee Header Stacking Order and Opacity === */
-        #header {
-            /* Ensures the header is the top layer, overriding all other content */
-            z-index: 999;
-            /* Guarantees solid white background, preventing scroll-through text */
-            background-color: #ffffff !important; 
-        }
 
         /* CRITICAL: Ensures content isn't hidden under the fixed header when scrolling to an anchor link */
         section {
@@ -39,14 +31,14 @@
 
         /* --- BRAND COLORS DEFINITION --- */
         :root {
-            --primary-blue: #3A6FFF; /* Deep Blue from left side of logo */
-            --darker-blue: #2C58D3; /* Slightly darker for hover */
-            --secondary-cyan: #1FE8FF; /* Bright Cyan from right side of logo for highlights */
+            --primary-blue: #3A98FF; /* NEW: Bright Sky Blue */
+            --darker-blue: #1E84FF; /* NEW: Darker shade of bright blue */
+            /* --secondary-cyan: #1FE8FF; /* OLD: Bright Cyan (Removed for cleaner branding) */
 
             /* NEW: Grid Variables (for the Hero background effect) */
             --grid-size: 20; /* 20x20 grid */
             --cell-gap: 1px;
-            --glow-color: #3A6FFF; /* Primary Blue */
+            --glow-color: #3A98FF; /* NEW: Primary Blue */
         }
         
         /* Defining the primary accent color utilities */
@@ -55,8 +47,8 @@
 
         /* Custom opacity class for the CTA banner (uses the primary blue) */
         .bg-accent\/10 { 
-            background-color: rgba(58, 111, 255, 0.1); 
-            border-top: 1px solid rgba(58, 111, 255, 0.2); /* Subtle blue line */
+            background-color: rgba(58, 152, 255, 0.1); 
+            border-top: 1px solid rgba(58, 152, 255, 0.2); /* Subtle blue line */
         } 
         
         /* General transition for interactive elements */
@@ -69,18 +61,18 @@
         .btn-primary {
             background-color: var(--primary-blue); 
             color: white;
-            /* Creating a wide, smooth shadow effect using the brand gradient */
-            box-shadow: 0 8px 30px -8px rgba(58, 111, 255, 0.6), 0 2px 10px rgba(31, 232, 255, 0.2);
+            /* Creating a wide, smooth shadow effect using the new brand color */
+            box-shadow: 0 8px 30px -8px rgba(58, 152, 255, 0.6);
         }
         .btn-primary:hover {
             background-color: var(--darker-blue); 
             transform: translateY(-4px); 
             /* Increase and shift the shadow on hover */
-            box-shadow: 0 12px 35px -10px rgba(58, 111, 255, 0.8), 0 4px 15px rgba(31, 232, 255, 0.4); 
+            box-shadow: 0 12px 35px -10px rgba(58, 152, 255, 0.8); 
         }
         .btn-primary:active {
             transform: translateY(-1px); 
-            box-shadow: 0 4px 15px -4px rgba(58, 111, 255, 0.6);
+            box-shadow: 0 4px 15px -4px rgba(58, 152, 255, 0.6);
         }
 
         /* --- Secondary Button Styling (Clean Outline) --- */
@@ -93,7 +85,7 @@
             background-color: var(--primary-blue);
             color: white;
             transform: translateY(-2px); 
-            box-shadow: 0 4px 15px rgba(58, 111, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(58, 152, 255, 0.3);
         }
         
         /* --- Nav Link Underline Effect --- */
@@ -125,7 +117,7 @@
         .card:hover {
             transform: translateY(-6px);
             /* Clean, defined shadow on hover */
-            box-shadow: 0 10px 25px rgba(58, 111, 255, 0.15); 
+            box-shadow: 0 10px 25px rgba(58, 152, 255, 0.15); 
         }
         
         /* --- Process Section Styling (Dots and Line) --- */
@@ -151,7 +143,7 @@
             font-size: 1.125rem;
             z-index: 10;
             /* Subtle inner shadow for depth */
-            box-shadow: inset 0 0 0 1px rgba(58, 111, 255, 0.2); 
+            box-shadow: inset 0 0 0 1px rgba(58, 152, 255, 0.2); 
         }
         
         .process-line {
@@ -165,6 +157,29 @@
         .process-step:last-child .process-line {
             display: none;
         }
+
+        /* --- NEW: Form Input Glow Effect --- */
+        #contactForm input[type="text"],
+        #contactForm input[type="email"],
+        #contactForm input[type="tel"],
+        #contactForm textarea,
+        #contactForm select {
+            /* Add transition for the new hover effect */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #contactForm input[type="text"]:hover,
+        #contactForm input[type="email"]:hover,
+        #contactForm input[type="tel"]:hover,
+        #contactForm textarea:hover,
+        #contactForm select:hover {
+            /* Apply the glow on hover */
+            border-color: var(--primary-blue);
+            /* Mimic Tailwind's focus-ring shadow */
+            box-shadow: 0 0 0 3px rgba(58, 152, 255, 0.4);
+        }
+        /* Tailwind's focus:ring-accent will handle the focus state automatically */
+
 
         /* --- Scroll Animation Styling (Fade-Up Effect) --- */
         .animate-on-scroll {
@@ -185,13 +200,13 @@
             transform: translateY(0);
         }
         
-        /* --- NEW: Illuminating Grid Styles (Updated for Square Cells) --- */
+        /* --- NEW: Illuminating Grid Styles --- */
         #grid-container {
             display: grid;
             width: 100%;
-            height: 100%; 
+            height: 100%;
             grid-template-columns: repeat(var(--grid-size), 1fr);
-            /* CRITICAL: Removed grid-template-rows: 1fr; to allow cell height to be defined by padding (1:1 aspect ratio) */
+            grid-template-rows: repeat(var(--grid-size), 1fr);
             gap: var(--cell-gap);
             background-color: transparent; 
             z-index: 5; 
@@ -201,12 +216,6 @@
             background-color: rgba(0, 0, 0, 0.05); /* Very dark background for cells */
             transition: all 0.2s ease-out;
             border-radius: 2px;
-            
-            /* --- FIX: Force 1:1 Aspect Ratio (Square) --- */
-            height: 0; 
-            padding-bottom: 100%; /* Height is 100% of the calculated width (1fr) */
-            position: relative;
-
             animation-name: illuminate;
             animation-iteration-count: infinite;
             animation-timing-function: ease-in-out;
@@ -222,12 +231,12 @@
             2% {
                 opacity: 0.6; /* Increased cell opacity */
                 /* Increased shadow size and opacity for a brighter glow */
-                box-shadow: 0 0 15px 3px rgba(58, 111, 255, 0.9); 
+                box-shadow: 0 0 15px 3px rgba(58, 152, 255, 0.9); 
             }
             /* Settle back down */
             10% {
                 opacity: 0.2; /* Slightly increased fall-off glow */
-                box-shadow: 0 0 5px 0px rgba(58, 111, 255, 0.4);
+                box-shadow: 0 0 5px 0px rgba(58, 152, 255, 0.4);
             }
             /* Stay subtle/off for the rest of the cycle */
             15%, 100% {
@@ -236,7 +245,7 @@
             }
         }
 
-        /* --- Hero Fade Out Effect --- */
+        /* --- NEW: Hero Fade Out Effect --- */
         /* The next section is bg-slate-50 (#f8fafc), so the fade must match this color. */
         #hero::after {
             content: '';
@@ -255,12 +264,11 @@
 <body class="antialiased text-slate-900">
 
     <!-- Header / Navigation Bar - Clean and Minimalist -->
-    <!-- The z-index is now primarily controlled by the custom CSS #header selector for maximum priority -->
-    <header id="header" class="bg-white fixed top-0 left-0 right-0 shadow-sm border-b border-slate-100 transition duration-300">
+    <header id="header" class="bg-white/95 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 shadow-sm border-b border-slate-100 transition duration-300">
         <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <!-- LOGO (Clean Text) -->
             <a href="#hero" class="text-2xl font-extrabold text-slate-900 flex items-center">
-                <span>META<span class="text-accent">SERVER</span></span>
+                <span>WEB<span class="text-accent">VALET</span></span>
             </a>
             
             <!-- Desktop Navigation -->
@@ -284,8 +292,8 @@
             </button>
         </div>
         
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-white shadow-inner">
+        <!-- Mobile Menu Dropdown (Simplified to remove direct contact links) -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-white/95 shadow-inner">
             <a href="#services" class="block py-3 text-slate-700 hover:text-accent transition duration-150">Services</a>
             <a href="#process" class="block py-3 text-slate-700 hover:text-accent transition duration-150">Our Process</a>
             <a href="#testimonials" class="block py-3 text-slate-700 hover:text-accent transition duration-150">Testimonials</a>
@@ -300,16 +308,15 @@
 
     <main class="pt-20">
 
-        <!-- 1. Hero Section -->
+        <!-- 1. Hero Section - REDUCED PADDING AT BOTTOM TO ACCOUNT FOR FADE HEIGHT -->
         <section id="hero" class="relative overflow-hidden pt-16 pb-24 bg-white">
             
-            <!-- Illuminating Grid Container (Background Layer) -->
-            <!-- The cells inside this container are now guaranteed to be squares -->
+            <!-- UPDATED OPACITY: Illuminating Grid Container (Background Layer) -->
             <div id="grid-container" class="absolute inset-0 opacity-70">
                 <!-- Cells are generated by JS -->
             </div>
             
-            <!-- Main Content (Foreground Layer) -->
+            <!-- UPDATED Z-INDEX: Main Content (Foreground Layer) -->
             <div class="container mx-auto px-4 sm:px-6 text-center relative z-50">
                 <p class="text-sm font-semibold uppercase tracking-widest text-accent mb-4 animate-on-scroll">Build Your Digital Presence</p>
                 <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-tight animate-on-scroll delay-1">
@@ -488,7 +495,7 @@
                     <div class="card bg-slate-50 p-8 rounded-3xl border border-slate-200 animate-on-scroll delay-1">
                         <!-- Quote Icon (HTML Entity) -->
                         <span class="text-6xl font-black text-accent opacity-70 mb-2 leading-none block">&ldquo;</span>
-                        <p class="text-lg italic text-slate-700 mb-6 leading-relaxed">"METASERVER's website doubled our online quote requests in the first month. The design is modern, and the whole process was simple."</p>
+                        <p class="text-lg italic text-slate-700 mb-6 leading-relaxed">"WebValet's website doubled our online quote requests in the first month. The design is modern, and the whole process was simple."</p>
                         <p class="font-bold text-slate-900">- Valued Customer</p>
                     </div>
 
@@ -607,10 +614,10 @@
             <!-- Logo & Info -->
             <div>
                 <a href="#hero" class="text-2xl font-extrabold text-slate-900 flex items-center mb-4">
-                    <span>META<span class="text-accent">SERVER</span></span>
+                    <span>WEB<span class="text-accent">VALET</span></span>
                 </a>
                 <p class="text-sm">We build powerful digital presences for small businesses.</p>
-                <p class="text-sm mt-4 text-slate-500">&copy; 2025 METASERVER. All rights reserved.</p>
+                <p class="text-sm mt-4 text-slate-500">&copy; 2025 WebValet. All rights reserved.</p>
             </div>
             
             <!-- Quick Links -->
